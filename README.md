@@ -1,6 +1,6 @@
 # NASA Milling: Sensor Features and Tool-Wear Baselines
 
-An ongoing Python learning project exploring how spindle vibration and acoustic emission (AE) relate to measured flank wear (VB). By **Songjiang Cai**, Mechanical Engineering student at the University of Manchester.
+An ongoing Python learning project exploring how spindle vibration and acoustic emission (AE) relate to measured flank wear (VB). By **Songjiang Cai**, Second year Mechanical Engineering student at the University of Manchester.
 
 **Current scope:** exploratory analysis of Case 1 and individual linear regression baselines. Independent validation and multivariable modelling are planned, not completed.
 
