@@ -1,0 +1,25 @@
+{
+  "dataset_shape": [
+    1,
+    167
+  ],
+  "case": 1,
+  "labelled_records": 13,
+  "retains_zero_VB": true,
+  "window_fraction": [
+    0.2777777777777778,
+    0.6944444444444444
+  ],
+  "window_boundary": "strictly greater / strictly less",
+  "window_indices_zero_based": [
+    2501,
+    6249
+  ],
+  "std_ddof": 0,
+  "time_axis": "Original 36-second assumption is unverified; publication waveform uses sample indices.",
+  "data_sha256": "71486a857939d1416c86c7cf0c469d5e69c7c30495e01ec8a0e13aafd2a313cb",
+  "evaluation": "in-sample; no held-out data",
+  "primary_analysis": "notebooks/01_case1_exploration.ipynb; original learning cells plus labelled publication additions",
+  "supplied_original": "notebooks/Mill_phase_2_Fixed.ipynb",
+  "supplied_original_sha256": "e101e46e04db69b5c46f108d0bd47cfc056c06462aace2c65bac1090ce54c573"
+}
