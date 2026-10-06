@@ -1,26 +1,26 @@
 from pathlib import Path
 data_file = Path(__file__).parent/"mill.mat"
-# print(data_file.exists())
+print(data_file.exists())
 
 from scipy.io import loadmat
 data = loadmat(data_file)
 print(data.keys())
 
-# header = data["__header__"]
-# version = data["__version__"]
-# globals = data["__globals__"]
+header = data["__header__"]
+version = data["__version__"]
+globals = data["__globals__"]
 
-# print(type(header))
-# print(type(version))
-# print(type(globals))
-# print(header)
-# print(version)
-# print(globals)
-#check data shape
+print(type(header))
+print(type(version))
+print(type(globals))
+print(header)
+print(version)
+print(globals)
+check data shape
 
 #mill
 mill = data["mill"]
-# print(type(mill))
+print(type(mill))
 print(mill.shape)
 print(mill.dtype.names)
 
@@ -28,16 +28,16 @@ first_run = mill[0, 0]
 
 #first run condition
 
-# print("case=",first_run["case"])
-# print("run =", first_run["run"])
-# print("VB =", first_run["VB"])
-# print("DOC =", first_run["DOC"])
-# print("feed =", first_run["feed"])
-# print("material =", first_run["material"])
+print("case=",first_run["case"])
+print("run =", first_run["run"])
+print("VB =", first_run["VB"])
+print("DOC =", first_run["DOC"])
+print("feed =", first_run["feed"])
+print("material =", first_run["material"])
 
-# print("time_shape=",first_run["time"].shape)
-# print("vib_spindle=",first_run["vib_spindle"].shape)
-# print("time=",first_run["time"].item())
+print("time_shape=",first_run["time"].shape)
+print("vib_spindle=",first_run["vib_spindle"].shape)
+print("time=",first_run["time"].item())
 
 #plot spindle vibriation
 
@@ -53,38 +53,38 @@ x_t = np.arange(n_sample)/ 250
 
 #other data
 
-# print(first_run["smcAC"].shape)
-# print(first_run["smcDC"].shape)
-# print(first_run["vib_table"].shape)
-# print(first_run["AE_table"].shape)
-# print(first_run["AE_spindle"].shape)
+print(first_run["smcAC"].shape)
+print(first_run["smcDC"].shape)
+print(first_run["vib_table"].shape)
+print(first_run["AE_table"].shape)
+print(first_run["AE_spindle"].shape)
 
-# print("case=",first_run["case"])
-# print("run=",first_run["run"])
+print("case=",first_run["case"])
+print("run=",first_run["run"])
 
 #list all the run and case
 
-# n = np.arange(167)
-# n_run = mill[0,n]
-# for i, one_run in enumerate(n_run):
-#     print(
-#         i,
-#         "case=", one_run["case"].item(),
-#         "run=", one_run["run"].item(),
-#         "VB=", one_run["VB"].item()
-#     )
-# start = 0
-# current_case = n_run[0]["case"].item()
+n = np.arange(167)
+n_run = mill[0,n]
+for i, one_run in enumerate(n_run):
+    print(
+        i,
+        "case=", one_run["case"].item(),
+        "run=", one_run["run"].item(),
+        "VB=", one_run["VB"].item()
+    )
+start = 0
+current_case = n_run[0]["case"].item()
 
-# for i, one_run in enumerate(n_run):
-#     case = one_run["case"].item()
+for i, one_run in enumerate(n_run):
+    case = one_run["case"].item()
 
-#     if case != current_case:
-#         print(f"mill({start}-{i - 1}) : case {current_case}")
-#         start = i
-#         current_case = case
+    if case != current_case:
+        print(f"mill({start}-{i - 1}) : case {current_case}")
+        start = i
+        current_case = case
 
-# print(f"mill({start}-{len(n_run) - 1}) : case {current_case}")
+print(f"mill({start}-{len(n_run) - 1}) : case {current_case}")
 
 #compare vib_spindle/table and AE_spindle/table
 
