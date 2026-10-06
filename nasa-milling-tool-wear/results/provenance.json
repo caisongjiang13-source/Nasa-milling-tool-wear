@@ -1,0 +1,18 @@
+{
+  "dataset_shape": [
+    1,
+    167
+  ],
+  "case": 1,
+  "labelled_records": 13,
+  "window_fraction": [
+    0.2777777777777778,
+    0.6944444444444444
+  ],
+  "window_boundary": "strictly greater / strictly less",
+  "std_ddof": 0,
+  "retains_zero_VB": true,
+  "time_axis": "original 36-second assumption is unverified; use sample indices",
+  "data_sha256": "71486a857939d1416c86c7cf0c469d5e69c7c30495e01ec8a0e13aafd2a313cb",
+  "evaluation": "in-sample; no held-out data"
+}
