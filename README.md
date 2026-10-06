@@ -6,9 +6,10 @@ An ongoing Python learning project exploring how spindle vibration and acoustic 
 
 ## Start with my learning code
 
-- [My supplied learning notebook: Mill_phase_2_Fixed.ipynb](notebooks/Mill_phase_2_Fixed.ipynb) is preserved exactly as supplied, including code, comments, exploratory plots, notes and saved outputs.
-- [Reading edition: 01_case1_exploration.ipynb](notebooks/01_case1_exploration.ipynb) follows every original cell in the same order. It keeps my variable names and commented-out experiments, adds marked explanations, and records the small code corrections. It runs its feature extraction directly, without importing the helper script.
-- [Source-code guide / 源代码对照说明](docs/SOURCE_CODE_GUIDE_ZH.md) explains what is preserved, corrected or added. A [cell-by-cell map](docs/source_cell_map.json) makes those edits traceable.
+- [Early VS Code exploration: read.py](scripts/early_exploration/read.py), [explore_case1.py](scripts/early_exploration/explore_case1.py) and [my early data notes](scripts/early_exploration/data_dictionary.md) are exact copies from my uploaded project archive, including my comments. See the [early-stage running guide](scripts/early_exploration/README.md) and [source fingerprints](docs/early_source_manifest.json).
+- [Restored notebook: Mill_phase_2_Restored.ipynb](notebooks/Mill_phase_2_Restored.ipynb) was reconstructed earlier from pasted Colab content. It is explicitly a restored snapshot, not a notebook downloaded directly from my Colab account. A direct Colab export has not been supplied in this archive.
+- [Reading edition: 01_case1_exploration.ipynb](notebooks/01_case1_exploration.ipynb) follows the restored snapshot cell by cell, retaining its variables and comments, with marked explanations, corrections and assisted additions. Its feature calculations run directly without importing the helper script.
+- [Source-code guide / 源代码对照说明](docs/SOURCE_CODE_GUIDE_ZH.md) explains these sources. The [cell-by-cell map](docs/source_cell_map.json) refers specifically to the restored snapshot.
 
 I used ChatGPT to help prepare the reading notes, export tables and publication figures. Those additions are labelled in the notebook. The optional `src/analysis.py` is an assisted refactor, kept as a convenient export command; it is not my original learning code.
 
@@ -37,7 +38,7 @@ The source `mill.mat` used here contains 167 records. This release analyses the 
 - Fit separate linear models using vibration mean, vibration standard deviation, and AE mean.
 - Inspect signed residuals and mean absolute error (MAE); label points by actual Case 1 run IDs.
 
-The reading edition keeps the original exploration visible. Necessary corrections and publication additions are marked beside the affected code. The AE mean fit is added from the later result screenshots because it is absent from the supplied source notebook. See [the change notes](docs/PUBLICATION_NOTES.md).
+The reading edition keeps the original exploration visible. Necessary corrections and publication additions are marked beside the affected code. The AE mean fit is added from the later result screenshots because it is absent from the restored notebook. See [the change notes](docs/PUBLICATION_NOTES.md).
 
 ## Method
 
@@ -78,6 +79,10 @@ AE mean gives a lower fitting MAE than vibration mean in this case. The models h
 
 All labelled records remain in the fit. An unusual signal or large residual is not, by itself, proof of a sensor fault or a reason to remove a record.
 
+## Run the earliest Python scripts
+
+Follow the [early-stage Windows / VS Code guide](scripts/early_exploration/README.md). The original scripts expect `mill.mat` beside them in `scripts/early_exploration/`; the later analysis expects it in `data/`. Their original paths and early window assumptions have been preserved.
+
 ## Run the analysis
 
 Install Python from [python.org](https://www.python.org/downloads/), extract or clone this repository, and open a terminal in the repository root. The numerical analysis was checked with Python 3.12.14, NumPy 2.3.5, SciPy 1.17.0, pandas 2.2.3 and Matplotlib 3.10.8; see [the validation note](docs/VALIDATION.md). Other installations have not been tested here.
@@ -114,7 +119,7 @@ To open the notebook:
 
 Open [notebooks/01_case1_exploration.ipynb](notebooks/01_case1_exploration.ipynb) and run the cells in order. This is the main reading and learning entry point. Its original feature calculations and labelled publication additions reproduce the tables and figures; the optional script reproduces the same numerical results. Saved notebook outputs and figures can also be read without running Python.
 
-To read the code and comments as supplied, open [Mill_phase_2_Fixed.ipynb](notebooks/Mill_phase_2_Fixed.ipynb). This untouched snapshot retains its original Colab Drive path. Its existing metadata documents an earlier restoration from pasted Colab text; this package preserves the supplied file, not an independently obtained pre-restoration export.
+For the earliest original Python code, start with [read.py](scripts/early_exploration/read.py). To inspect the separately restored Colab content, open [Mill_phase_2_Restored.ipynb](notebooks/Mill_phase_2_Restored.ipynb). Its Drive path and restoration metadata are retained; it is not a direct Colab export.
 
 For beginner-friendly Windows, Colab and GitHub upload instructions, see [中文安装与发布指南](docs/SETUP_ZH.md).
 
@@ -122,7 +127,8 @@ For beginner-friendly Windows, Colab and GitHub upload instructions, see [中文
 
 | Path | Purpose |
 | --- | --- |
-| `notebooks/Mill_phase_2_Fixed.ipynb` | Untouched supplied learning notebook, including original code and comments |
+| `scripts/early_exploration/` | Exact original VS Code scripts, early notes and running guide |
+| `notebooks/Mill_phase_2_Restored.ipynb` | Restored Colab snapshot, explicitly distinct from a direct export |
 | `notebooks/01_case1_exploration.ipynb` | Every original cell, marked reading notes, minimal corrections and saved outputs |
 | `src/analysis.py` | Optional assisted refactor for exporting the same results |
 | `data/README.md` | Where to obtain and place the raw data |
