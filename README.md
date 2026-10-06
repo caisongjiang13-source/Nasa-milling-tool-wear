@@ -9,7 +9,6 @@ An ongoing Python learning project exploring how spindle vibration and acoustic 
 - [Early VS Code exploration: read.py](scripts/read.py), [explore_case1.py](scripts/explore_case1.py) and [my early data notes](docs/data_dictionary.md) are exact copies from my uploaded project archive, including my comments.
 - [Restored notebook: Mill_phase_2_Fixed.ipynb](notebooks/Mill_phase_2_Fixed.ipynb) was reconstructed earlier from pasted Colab content. It is explicitly a restored snapshot, not a notebook downloaded directly from my Colab account. A direct Colab export has not been supplied in this archive.
 - [Reading edition: 01_case1_exploration.ipynb](notebooks/01_case1_exploration.ipynb) follows the restored snapshot cell by cell, retaining its variables and comments, with marked explanations, corrections and assisted additions. Its feature calculations run directly without importing the helper script.
-- [Source-code guide / 源代码对照说明](docs/SOURCE_CODE_GUIDE_ZH.md) explains these sources. The [cell-by-cell map](docs/source_cell_map.json) refers specifically to the restored snapshot.
 
 I used ChatGPT to help prepare the reading notes, export tables and publication figures. Those additions are labelled in the notebook. The optional `src/analysis.py` is an assisted refactor, kept as a convenient export command; it is not my original learning code.
 
