@@ -7,8 +7,9 @@ An ongoing Python learning project exploring how spindle vibration and acoustic 
 ![Sensor features and measured wear](figures/feature_relationships.png)
 
 ## Why this project?
+I’ve always been curious about how the physical behavior of a machine can reflect what is happening inside it. Things like vibration, sound, or other signals may look simple from the outside. But if there is a connection between those signals and internal situation, then we can roughly know the tool condition without break the whole structure. Then we may be able to monitor its condition earlier and make maintenance decisions based on actual data.
 
-I wanted to connect mechanical engineering with Python data analysis and explore a practical problem in smart manufacturing: estimating cutting-tool wear from sensor signals.
+I also wanted to connect mechanical engineering with Python data analysis and explore a practical problem in smart manufacturing. Then  estimating cutting-tool wear from sensor signals was chosen.
 
 This stage focuses on understanding the data, selecting a consistent signal window, comparing simple features, and examining where a linear fit struggles.
 
