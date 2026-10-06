@@ -85,11 +85,25 @@ def save_figures(mill, features, metrics, residuals, destination):
         x = np.linspace(features[feature].min(), features[feature].max(), 100)
         ax.plot(x, row.slope * x + row.intercept, color=colors[feature], alpha=0.65)
         for _, point in features.iterrows():
-            offset = (5, 10) if feature == "vib_mean" and int(point.run) == 8 else (5, 5)
-            if feature == "vib_mean" and int(point.run) == 9:
-                offset = (-12, -13)
-            ax.annotate(str(int(point.run)), (point[feature], point.VB),
-                        xytext=offset, textcoords="offset points", fontsize=9)
+            offset = (5, 5)
+
+            if feature == "vib_mean":
+                if int(point.run) == 8:
+                    offset = (5, 10)
+                elif int(point.run) == 9:
+                    offset = (-12, -13)
+                elif int(point.run) == 13:
+                    offset = (-18, 8)
+                elif int(point.run) == 14:
+                    offset = (5, 12)
+
+            ax.annotate(
+                str(int(point.run)),
+                (point[feature], point.VB),
+                xytext=offset,
+                textcoords="offset points",
+                fontsize=9,
+            )
         ax.set(title=f"{title} | r = {row.pearson_r:+.3f}",
                xlabel="Mean signal (dataset units)", ylabel="Flank wear VB (dataset units)")
         style_axes(ax)
