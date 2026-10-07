@@ -1,12 +1,12 @@
 # NASA Milling Data Dictionary
 
-| 字段 | 它代表什么 | 单位 |
+| Field | what represents | unit |
 | --- | --- | --- |
-| VB        | 后刀面磨损  | mm |
-| DOC       | 切削深度    | mm |
-| feed      | 进给量      | mm/rev |
-| material  | 材料编号    | 1-cast iron, 2-steel |
-| time      | 时间相关数据| 待核对 |
+| VB        | Flank wear  | mm |
+| DOC       | depth of cut    | mm |
+| feed      | feed    | mm/rev |
+| material  | material type number    | 1-cast iron, 2-steel |
+| time      | time-related| s |
 
 sample rate = 250 Hz
 
