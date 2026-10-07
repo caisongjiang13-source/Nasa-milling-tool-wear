@@ -40,7 +40,7 @@ In this case, spindle vibration mean tends to decrease as wear increases, while 
 | Spindle vibration mean | -0.863 | 0.0578 |
 | Spindle AE mean | 0.911 | 0.0511 |
 
-Source: the correlation and MAE outputs in the [analysis notebook](Mill_phase_2_Fixed%20%281%29.ipynb).
+Source: the correlation and MAE outputs in the [Mill_phase_2_Fixed notebook](Mill_phase_2_Fixed.ipynb).
 
 AE mean has a slightly lower fitting error here. The residuals also show that the two models make different errors on individual runs, which is why I started looking at the signals together.
 
