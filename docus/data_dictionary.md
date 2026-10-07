@@ -32,17 +32,17 @@ mill(161-166) : case 16
 0 case= 1 run= 1 VB= 0
 1 case= 1 run= 2 VB= nan
 2 case= 1 run= 3 VB= nan
-# 3 case= 1 run= 4 VB= 0.11
+3 case= 1 run= 4 VB= 0.11
 4 case= 1 run= 5 VB= nan
 5 case= 1 run= 6 VB= 0.2
 6 case= 1 run= 7 VB= 0.24
 7 case= 1 run= 8 VB= 0.29
-# 8 case= 1 run= 9 VB= 0.28
+8 case= 1 run= 9 VB= 0.28
 9 case= 1 run= 10 VB= 0.29
 10 case= 1 run= 11 VB= 0.38
 11 case= 1 run= 12 VB= 0.4
 12 case= 1 run= 13 VB= 0.43
-# 13 case= 1 run= 14 VB= 0.45
+13 case= 1 run= 14 VB= 0.45
 14 case= 1 run= 15 VB= 0.5
 15 case= 1 run= 16 VB= nan
 16 case= 1 run= 17 VB= 0.44
