@@ -1,156 +1,83 @@
-# NASA Milling: Sensor Features and Tool-Wear Baselines
+# NASA Milling: Exploring Tool Wear
 
-An ongoing Python learning project exploring how spindle vibration and acoustic emission (AE) relate to measured flank wear (VB). By **Songjiang Cai**, Mechanical Engineering student at the University of Manchester.
+I wanted to understand whether changes in milling signals could tell us something about tool wear. This project uses Python to explore that question with the NASA Milling dataset.
 
-**Current scope:** exploratory analysis of Case 1 and individual linear regression baselines. Independent validation and multivariable modelling are planned, not completed.
+The work so far covers plotting signals, calculating their mean and standard deviation, and trying simple linear models to estimate wear. It is still a learning project in progress.
 
-## Start with my learning code
+## Data
 
-- [Early VS Code exploration: read.py](scripts/read.py), [explore_case1.py](scripts/explore_case1.py) and [my early data notes](docs/data_dictionary.md) are exact copies from my uploaded project archive, including my comments.
-- [Restored notebook: Mill_phase_2_Fixed.ipynb](notebooks/Mill_phase_2_Fixed.ipynb) was reconstructed earlier from pasted Colab content. It is explicitly a restored snapshot, not a notebook downloaded directly from my Colab account. A direct Colab export has not been supplied in this archive.
-- [Reading edition: 01_case1_exploration.ipynb](notebooks/01_case1_exploration.ipynb) follows the restored snapshot cell by cell, retaining its variables and comments, with marked explanations, corrections and assisted additions. Its feature calculations run directly without importing the helper script.
+The data comes from the [Milling dataset in NASA's Prognostics Data Repository](https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/), provided by the UC Berkeley BEST Lab. The original data file is `mill.mat` and needs to be downloaded separately using the links below.
 
-I used ChatGPT to help prepare the reading notes, export tables and publication figures. Those additions are labelled in the notebook. The optional `src/analysis.py` is an assisted refactor, kept as a convenient export command; it is not my original learning code.
+The [notebook](Mill_phase_2_Fixed%20%281%29.ipynb) records 167 runs in the file. The current wear analysis uses the 13 runs in Case 1 with a recorded VB value, including VB = 0. Runs without a VB value are still useful for inspecting signals, but are left out of the model fitting.
 
-![Sensor features and measured wear](figures/feature_relationships.png)
+VB means flank wear, measured in millimetres. The [data dictionary](data_dictionary.md) contains field notes, case ranges and recorded wear values.
 
-## Why this project?
+## Files
 
-I wanted to connect mechanical engineering with Python data analysis and explore a practical problem in smart manufacturing: estimating cutting-tool wear from sensor signals.
+| File | What it contains |
+| --- | --- |
+| [read.py](read.py) | Early exploration: loading the data, comparing spindle and table signals, and checking acoustic emission means in selected runs. |
+| [Mill_phase_2_Fixed (1).ipynb](Mill_phase_2_Fixed%20%281%29.ipynb) | The main analysis: signal plots, feature tables, correlations, linear fits and residual comparisons. |
+| [data_dictionary.md](data_dictionary.md) | Notes on the data fields and how the runs are grouped. Some details are still marked for checking. |
 
-This stage focuses on understanding the data, selecting a consistent signal window, comparing simple features, and examining where a linear fit struggles.
+## Work so far
 
-## Data and provenance
+- Compared vibration and acoustic emission (AE) signals from the spindle and table.
+- Plotted Case 1 spindle signals to inspect how they change between runs and investigate unusual behaviour.
+- Calculated the mean and standard deviation of spindle vibration and AE using the notebook's selected time window.
+- Checked their relationship with VB using scatter plots and Pearson correlation.
+- Fitted separate straight-line models using vibration mean, vibration standard deviation and AE mean.
+- Compared the vibration-mean and AE-mean models using residuals and mean absolute error (MAE).
 
-The [NASA PCoE Milling dataset](https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/) records milling-insert wear under different experimental conditions. NASA credits the dataset to the UC Berkeley BEST Lab.
+The notebook also puts vibration mean and AE mean into the same table. A model using both together has not been fitted yet.
 
-Dataset citation supplied by NASA: A. Agogino and K. Goebel (2007), BEST Lab, UC Berkeley, “Milling Data Set”, NASA Prognostics Data Repository, NASA Ames Research Center.
+## What I found so far
 
-The source `mill.mat` used here contains 167 records. This release analyses the 13 Case 1 records with finite VB labels, including VB = 0. Source counts, the window definition and a file checksum are recorded in [provenance.json](results/provenance.json). The raw dataset is downloaded separately and is not bundled.
+In this case, spindle vibration mean tends to decrease as wear increases, while spindle AE mean tends to increase. The saved notebook outputs give the following results:
 
-## What has been completed?
-
-- Inspect Case 1 spindle vibration and AE signals.
-- Exclude missing VB labels from supervised fitting while retaining the zero-wear record.
-- Extract mean and standard deviation for both channels over the same signal window.
-- Compare feature–VB correlations.
-- Fit separate linear models using vibration mean, vibration standard deviation, and AE mean.
-- Inspect signed residuals and mean absolute error (MAE); label points by actual Case 1 run IDs.
-
-The reading edition keeps the original exploration visible. Necessary corrections and publication additions are marked beside the affected code. The AE mean fit is added from the later result screenshots because it is absent from the restored notebook. See [the change notes](docs/PUBLICATION_NOTES.md).
-
-## Method
-
-The provisional window preserves the original notebook's mask:
-
-```python
-t = np.arange(9000) * 36 / 9000
-mask = (t > 10) & (t < 25)
-```
-
-The physical time scale has not been verified against acquisition documentation. The reading edition keeps this exact mask; original waveform axes are marked as assumed coordinates. The published signal-window figure uses sample indices. For a 9000-sample signal this selects zero-based indices 2501–6249, recorded in [provenance.json](results/provenance.json). This window has not been validated for every case. Standard deviation uses `ddof=0`.
-
-Each baseline fits:
-
-```text
-VB_hat = a × feature + b
-residual = measured VB − VB_hat
-MAE = mean(abs(residual))
-```
-
-The feature is the input and VB is the target. The models are fitted separately; no combined model is included yet.
-
-## Current results
-
-The values below are reproduced in [baseline_metrics.csv](results/baseline_metrics.csv), using [case1_features.csv](results/case1_features.csv). VB and signals retain dataset units; no calibrated physical units are assumed here.
-
-| Single input feature | Pearson r with VB | In-sample MAE, in VB units |
+| Input used to estimate VB | Pearson correlation with VB | MAE (mm) |
 | --- | ---: | ---: |
-| Spindle vibration mean | −0.862647 | 0.057829 |
-| Spindle vibration standard deviation | −0.833915 | 0.065038 |
-| Spindle AE mean | +0.911328 | 0.051077 |
+| Spindle vibration mean | -0.863 | 0.0578 |
+| Spindle AE mean | 0.911 | 0.0511 |
 
-**These are fitting diagnostics. The same records are used to fit the models and calculate MAE. They are not independent test results.**
+Source: the correlation and MAE outputs in the [analysis notebook](Mill_phase_2_Fixed%20%281%29.ipynb).
 
-![Residual comparison](figures/residual_comparison.png)
+AE mean has a slightly lower fitting error here. The residuals also show that the two models make different errors on individual runs, which is why I started looking at the signals together.
 
-AE mean gives a lower fitting MAE than vibration mean in this case. The models have different residual patterns, which motivates investigating feature combinations. It does not yet demonstrate that the signals provide complementary predictive information on unseen runs.
+These errors are calculated on the same runs used to fit the models. They do not yet tell us how well the models will work on new runs or different cutting conditions.
 
-All labelled records remain in the fit. An unusual signal or large residual is not, by itself, proof of a sensor fault or a reason to remove a record.
+## How to run
 
-## Run the earliest Python scripts
-
-Follow the [early-stage Windows / VS Code guide](scripts/early_exploration/README.md). The original scripts expect `mill.mat` beside them in `scripts/early_exploration/`; the later analysis expects it in `data/`. Their original paths and early window assumptions have been preserved.
-
-## Run the analysis
-
-Install Python from [python.org](https://www.python.org/downloads/), extract or clone this repository, and open a terminal in the repository root. The numerical analysis was checked with Python 3.12.14, NumPy 2.3.5, SciPy 1.17.0, pandas 2.2.3 and Matplotlib 3.10.8; see [the validation note](docs/VALIDATION.md). Other installations have not been tested here.
-
-On Windows, without activating the environment:
-
-```powershell
-py -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe src\analysis.py
-```
-
-On macOS/Linux:
+The code uses NumPy, SciPy, Matplotlib and pandas. For a local Python environment, install them with:
 
 ```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python src/analysis.py
+python -m pip install numpy scipy matplotlib pandas
 ```
 
-Before running, download the Milling archive from NASA's linked repository, extract it, and place `mill.mat` in `data/`. Do not upload your raw data or virtual environment when publishing this package.
+**Main notebook in Google Colab**
 
-To use a different data location:
+1. Open `Mill_phase_2_Fixed (1).ipynb` in Colab.
+2. Put `mill.mat` in the top level of your Google Drive. The notebook currently loads `/content/drive/MyDrive/mill.mat`; change this path if you keep the data elsewhere.
+3. Run the cells from top to bottom and allow Colab to mount your Drive when prompted.
 
-```powershell
-.\.venv\Scripts\python.exe src\analysis.py --data "C:\path\to\mill.mat"
+**Early script on your computer**
+
+Put `mill.mat` in the same folder as `read.py`, then run:
+
+```bash
+python read.py
 ```
 
-To open the notebook:
+## Current limits
 
-```powershell
-.\.venv\Scripts\python.exe -m notebook
-```
+The models currently cover Case 1 only. The early script uses a 4–29 s window, while the notebook uses 10–25 s on its constructed time axis. These settings are visible in the respective files. The meaning of the dataset's `time` field is still marked for checking in the data dictionary.
 
-Open [notebooks/01_case1_exploration.ipynb](notebooks/01_case1_exploration.ipynb) and run the cells in order. This is the main reading and learning entry point. Its original feature calculations and labelled publication additions reproduce the tables and figures; the optional script reproduces the same numerical results. Saved notebook outputs and figures can also be read without running Python.
+The current results are a starting point for understanding the signals and their relationship with wear. More checking is needed before treating the models as reliable wear predictions.
 
-For the earliest original Python code, start with [read.py](scripts/early_exploration/read.py). To inspect the separately restored Colab content, open [Mill_phase_2_Restored.ipynb](notebooks/Mill_phase_2_Restored.ipynb). Its Drive path and restoration metadata are retained; it is not a direct Colab export.
+## Data source and references
 
-For beginner-friendly Windows, Colab and GitHub upload instructions, see [中文安装与发布指南](docs/SETUP_ZH.md).
+- [NASA PCoE Data Set Repository — Milling](https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/): the dataset description and credit to its contributors.
+- [NASA Open Data — Milling Wear](https://data.nasa.gov/dataset/milling-wear): the official dataset entry.
+- [Original Milling data download](https://phm-datasets.s3.amazonaws.com/NASA/3.+Milling.zip): the archive linked from NASA's repository. Download and extract it to obtain `mill.mat` and the accompanying dataset documentation.
 
-## Repository guide
-
-| Path | Purpose |
-| --- | --- |
-| `scripts/early_exploration/` | Exact original VS Code scripts, early notes and running guide |
-| `notebooks/Mill_phase_2_Restored.ipynb` | Restored Colab snapshot, explicitly distinct from a direct export |
-| `notebooks/01_case1_exploration.ipynb` | Every original cell, marked reading notes, minimal corrections and saved outputs |
-| `src/analysis.py` | Optional assisted refactor for exporting the same results |
-| `data/README.md` | Where to obtain and place the raw data |
-| `results/` | Feature, fit-metric, residual and provenance files |
-| `figures/` | Actual data plots used in the README |
-| `docs/` | Source-code guide, cell map, setup, publication notes, validation and learning log |
-
-## Next steps
-
-- Combine vibration mean and AE mean in a multivariable linear baseline.
-- Test whether standard deviation adds information beyond the means.
-- Compare against a simple baseline on held-out data, with a split suited to predicting later runs or new cases.
-- Revisit windows and experimental conditions before extending to other cases.
-- Consider machine-learning models after establishing a sound baseline and validation procedure.
-
-These are planned tasks. No validated machine-learning or real-time monitoring system is claimed in this release.
-
-## Personal reflection
-
-<!-- Add your own reflection: what you expected, what surprised you, and what you would change. -->
-
-## References and feedback
-
-See [SOURCES.md](docs/SOURCES.md) for the dataset, documentation and repository-structure references. Feedback can be left through this repository's Issues page. Maintainer: Songjiang Cai.
-
-Software licence: not selected for this draft. The NASA dataset is separately sourced; this package does not assign it a new licence.
+Dataset citation, as given by NASA: A. Agogino and K. Goebel (2007), BEST Lab, UC Berkeley. "Milling Data Set", NASA Prognostics Data Repository, NASA Ames Research Center, Moffett Field, CA.
