@@ -10,7 +10,7 @@ The data comes from the [Milling dataset in NASA's Prognostics Data Repository](
 
 The [notebook](Mill_phase_2_Fixed%20%281%29.ipynb) records 167 runs in the file. The current wear analysis uses the 13 runs in Case 1 with a recorded VB value, including VB = 0. Runs without a VB value are still useful for inspecting signals, but are left out of the model fitting.
 
-VB means flank wear, measured in millimetres. The [data dictionary](data_dictionary.md) contains field notes, case ranges and recorded wear values.
+VB means flank wear, measured in millimetres. The [data dictionary](docus/data_dictionary.md) contains field notes, case ranges and recorded wear values.
 
 ## Files
 
@@ -18,7 +18,7 @@ VB means flank wear, measured in millimetres. The [data dictionary](data_diction
 | --- | --- |
 | [read.py](scripts/read.py) | Early exploration: loading the data, comparing spindle and table signals, and checking acoustic emission means in selected runs. |
 | [Mill_phase_2_Fixed.ipynb](notebooks/Mill_phase_2_Fixed.ipynb) | The main analysis: signal plots, feature tables, correlations, linear fits and residual comparisons. |
-| [data_dictionary.md](data_dictionary.md) | Notes on the data fields and how the runs are grouped. Some details are still marked for checking. |
+| [data_dictionary.md](docus/data_dictionary.md) | Notes on the data fields and how the runs are grouped. Some details are still marked for checking. |
 
 ## Work so far
 
