@@ -56,7 +56,7 @@ python -m pip install numpy scipy matplotlib pandas
 
 **Main notebook in Google Colab**
 
-1. Open `Mill_phase_2_Fixed (1).ipynb` in Colab.
+1. Open `Mill_phase_2_Fixed.ipynb` in Colab.
 2. Put `mill.mat` in the top level of your Google Drive. The notebook currently loads `/content/drive/MyDrive/mill.mat`; change this path if you keep the data elsewhere.
 3. Run the cells from top to bottom and allow Colab to mount your Drive when prompted.
 
