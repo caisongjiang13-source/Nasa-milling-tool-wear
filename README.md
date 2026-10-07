@@ -8,7 +8,7 @@ The work so far covers plotting signals, calculating their mean and standard dev
 
 The data comes from the [Milling dataset in NASA's Prognostics Data Repository](https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/), provided by the UC Berkeley BEST Lab. The original data file is `mill.mat` and needs to be downloaded separately using the links below.
 
-The [notebook](Mill_phase_2_Fixed%20%281%29.ipynb) records 167 runs in the file. The current wear analysis uses the 13 runs in Case 1 with a recorded VB value, including VB = 0. Runs without a VB value are still useful for inspecting signals, but are left out of the model fitting.
+The [notebook](notebooks/Mill_phase_2_Fixed.ipynb) records 167 runs in the file. The current wear analysis uses the 13 runs in Case 1 with a recorded VB value, including VB = 0. Runs without a VB value are still useful for inspecting signals, but are left out of the model fitting.
 
 VB means flank wear, measured in millimetres. The [data dictionary](docus/data_dictionary.md) contains field notes, case ranges and recorded wear values.
 
