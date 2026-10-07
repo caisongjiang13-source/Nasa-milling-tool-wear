@@ -17,7 +17,7 @@ VB means flank wear, measured in millimetres. The [data dictionary](data_diction
 | File | What it contains |
 | --- | --- |
 | [read.py](read.py) | Early exploration: loading the data, comparing spindle and table signals, and checking acoustic emission means in selected runs. |
-| [Mill_phase_2_Fixed (1).ipynb](Mill_phase_2_Fixed%20%281%29.ipynb) | The main analysis: signal plots, feature tables, correlations, linear fits and residual comparisons. |
+| [Mill_phase_2_Fixed.ipynb](notebooks/Mill_phase_2_Fixed.ipynb) | The main analysis: signal plots, feature tables, correlations, linear fits and residual comparisons. |
 | [data_dictionary.md](data_dictionary.md) | Notes on the data fields and how the runs are grouped. Some details are still marked for checking. |
 
 ## Work so far
@@ -40,7 +40,7 @@ In this case, spindle vibration mean tends to decrease as wear increases, while 
 | Spindle vibration mean | -0.863 | 0.0578 |
 | Spindle AE mean | 0.911 | 0.0511 |
 
-Source: the correlation and MAE outputs in the [Mill_phase_2_Fixed notebook](Mill_phase_2_Fixed.ipynb).
+Source: the correlation and MAE outputs in the [Mill_phase_2_Fixed notebook](notebooks/Mill_phase_2_Fixed.ipynb).
 
 AE mean has a slightly lower fitting error here. The residuals also show that the two models make different errors on individual runs, which is why I started looking at the signals together.
 
