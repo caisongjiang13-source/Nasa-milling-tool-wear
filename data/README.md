@@ -1,7 +1,9 @@
 # Raw data
 
-Download the **Milling** archive linked from the [NASA PCoE repository](https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/).
+Download the Milling dataset from the [NASA PCoE repository](https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/) and extract `mill.mat`.
 
-Extract the archive and copy `mill.mat` into this folder. The script expects `data/mill.mat`. You can instead pass `--data` with its path.
+To run `scripts/read.py` locally, put `mill.mat` in the `scripts` folder, beside `read.py`.
 
-The raw data is not bundled or redistributed here. Only derived tables, figures and a SHA-256 fingerprint of the source used for this release are included. Consult the original source for attribution and usage terms.
+To run the notebook in Google Colab, put `mill.mat` in the top level of your Google Drive. The notebook currently loads `/content/drive/MyDrive/mill.mat`.
+
+The original dataset is downloaded separately and is not included in this repository.
