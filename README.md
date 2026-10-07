@@ -42,10 +42,13 @@ In this case, spindle vibration mean tends to decrease as wear increases, while 
 
 Source: the correlation and MAE outputs in the [Mill_phase_2_Fixed notebook](notebooks/Mill_phase_2_Fixed.ipynb).
 
+![Sensor features and tool wear](figures/feature_relationships.png)
+
 AE mean has a slightly lower fitting error here. The residuals also show that the two models make different errors on individual runs, which is why I started looking at the signals together.
 
 These errors are calculated on the same runs used to fit the models. They do not yet tell us how well the models will work on new runs or different cutting conditions.
 
+![Residual comparison](figures/residual_comparison.png)
 ## How to run
 
 The code uses NumPy, SciPy, Matplotlib and pandas. For a local Python environment, install them with:
@@ -72,6 +75,8 @@ python read.py
 ## Current limits
 
 The models currently cover Case 1 only. The early script uses a 4–29 s window, while the notebook uses 10–25 s on its constructed time axis. These settings are visible in the respective files. The meaning of the dataset's `time` field is still marked for checking in the data dictionary.
+
+![Selected signal window](figures/signal_window.png)
 
 The current results are a starting point for understanding the signals and their relationship with wear. More checking is needed before treating the models as reliable wear predictions.
 
