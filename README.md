@@ -16,7 +16,7 @@ VB means flank wear, measured in millimetres. The [data dictionary](data_diction
 
 | File | What it contains |
 | --- | --- |
-| [read.py](read.py) | Early exploration: loading the data, comparing spindle and table signals, and checking acoustic emission means in selected runs. |
+| [read.py](scripts/read.py) | Early exploration: loading the data, comparing spindle and table signals, and checking acoustic emission means in selected runs. |
 | [Mill_phase_2_Fixed.ipynb](notebooks/Mill_phase_2_Fixed.ipynb) | The main analysis: signal plots, feature tables, correlations, linear fits and residual comparisons. |
 | [data_dictionary.md](data_dictionary.md) | Notes on the data fields and how the runs are grouped. Some details are still marked for checking. |
 
