@@ -62,11 +62,10 @@ python -m pip install numpy scipy matplotlib pandas
 
 **Early script on your computer**
 
-Put `mill.mat` in the same folder as `read.py`, then run:
+Put mill.mat in the scripts folder, beside read.py. Open a terminal in the project’s root folder, then run:
 
-```bash
+cd scripts
 python read.py
-```
 
 ## Current limits
 
