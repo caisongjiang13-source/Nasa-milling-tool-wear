@@ -16,7 +16,7 @@ print(type(globals))
 print(header)
 print(version)
 print(globals)
-check data shape
+#check data shape
 
 #mill
 mill = data["mill"]
