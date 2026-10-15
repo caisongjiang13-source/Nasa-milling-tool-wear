@@ -1,6 +1,6 @@
 # NASA Milling: Exploring Tool Wear
 
-I wanted to understand whether changes in milling signals could tell us something about tool wear. This project uses Python to explore that question with the NASA Milling dataset.
+I wanted to understand how the signal can be used in real manufacturing. And I choose to start with whether changes in milling signals could tell us something about tool wear. This project uses Python to explore that question with the NASA Milling dataset.
 
 The work so far covers plotting signals, calculating their mean and standard deviation, and trying simple linear models to estimate wear. It is still a learning project in progress.
 
