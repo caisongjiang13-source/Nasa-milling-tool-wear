@@ -1,8 +1,10 @@
 # NASA Milling: Exploring Tool Wear
 
-I wanted to understand how the signal can be used in real manufacturing. And I choose to start with whether changes in milling signals could tell us something about tool wear. This project uses Python to explore that question with the NASA Milling dataset.
+I chose this project because I enjoy using data to understand the mechanisms behind what we observe. In machining, this led me to a specific question: can vibration and acoustic emission signals help us infer how worn a cutting tool has become? The NASA Milling dataset gives me a way to investigate this question while connecting mechanical engineering with practical Python analysis.
 
-The work so far covers plotting signals, calculating their mean and standard deviation, and trying simple linear models to estimate wear. It is still a learning project in progress.
+So far, I have explored the sensor signals, extracted features from a selected cutting window, and compared linear regression models using spindle acoustic emission and vibration means, both separately and together. I am now examining how their predictions change as more training runs become available, using chronological training and test splits and comparing errors for individual test runs.
+
+The aim is to use vibration and acoustic emission signals to estimate tool wear and test the model under different machining conditions, while developing a reusable data analysis workflow.
 
 ## Data
 
@@ -19,7 +21,7 @@ VB means flank wear, measured in millimetres. The [data dictionary](docus/data_d
 | [read.py](scripts/read.py) | Early exploration: loading the data, comparing spindle and table signals, and checking acoustic emission means in selected runs. |
 | [Mill_phase_2_Fixed.ipynb](notebooks/Mill_phase_2_Fixed.ipynb) | The main analysis: signal plots, feature tables, correlations, linear fits and residual comparisons. |
 | [data_dictionary.md](docus/data_dictionary.md) | Notes on the data fields and how the runs are grouped. Some details are still marked for checking. |
-| [Mill_phase2_2.ipynb](notebooks/Mill_phase2_2.ipynb) | Use the reusable function, test the estimation model and clarify where the improvement of two-feature model comes from. And so on (working on...). |
+| [Mill_phase2_2.ipynb](notebooks/Mill_phase2_2.ipynb) | Uses reusable functions to compare tool wear models, analyse prediction errors, and explore the effect of training set size. (In progress)|
 | [mill_function.ipynb](notebooks/mill_function.ipynb) | Contains reusable funciton. |
 
 ## Work so far
